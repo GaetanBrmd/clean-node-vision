@@ -1,0 +1,14 @@
+{
+    "name": "clean-node-vision",
+    "version": "1.0.0",
+    "description": "My vision of a clean architecture with NodeJS and Express.",
+    "main": "index.js",
+    "scripts": {
+    },
+    "author": "gbremond",
+    "license": "ISC",
+    "devDependencies": {
+    },
+    "dependencies": {
+    }
+}
