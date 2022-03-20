@@ -8,6 +8,7 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
+        "prettier"
     ], // Uses the linting rules from @typescript-eslint/eslint-plugin
     "env": {
         "node": true // Enable Node.js global variables
