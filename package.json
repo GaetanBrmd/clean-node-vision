@@ -4,6 +4,7 @@
     "description": "My vision of a clean architecture with NodeJS and Express.",
     "main": "index.js",
     "scripts": {
+        "preinstall": "git config core.hooksPath .githooks",
         "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' index.ts",
         "build": "tsc -p tsconfig-build.json",
         "test": "jest",
