@@ -1,9 +1,17 @@
 import express from 'express';
+import { MongoClient, ObjectId } from 'mongodb';
 
-export default async () => {
-    const app = express();
+const MONGO_URL = 'mongodb://root:example@localhost:27017/';
+let client: MongoClient;
 
-    // code will go here
+export async function setup() {
+    client = new MongoClient(MONGO_URL);
+    await client.connect();
+    console.log('🍃 MongoDB connected');
+    const shopDB = client.db('shop');
+    const products = shopDB.collection('products');
+
+    const app: express.Express = express();
 
     app.get('/', (req, res) => {
         res.status(200).send({
@@ -16,4 +24,9 @@ export default async () => {
     });
 
     return app;
-};
+}
+
+export async function disconnect() {
+    await client.close();
+    console.log('🍃 MongoDB disconnected ❌');
+}

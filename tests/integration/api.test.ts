@@ -1,16 +1,12 @@
 import request from 'supertest';
-import app from '../../src/app';
+import { testSetup, api } from './helpers';
 
 describe('Root endpoints', () => {
-    let api: Express.Application;
-
-    beforeAll(async () => {
-        api = await app();
-    });
+    testSetup();
 
     it('should respond to the GET method', async () => {
-        const response = await request(api).get('/');
+        const { statusCode } = await request(api).get('/');
 
-        expect(response.statusCode).toBe(200);
+        expect(statusCode).toBe(200);
     });
 });
