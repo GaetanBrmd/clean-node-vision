@@ -4,7 +4,9 @@ import bodyParser from 'body-parser';
 import { MongoClient, ObjectId } from 'mongodb';
 import logger from './logger';
 
-const MONGO_URL = 'mongodb://root:example@localhost:27017/';
+const MONGO_URL = process.env.MONGO_URL
+    ? process.env.MONGO_URL
+    : 'mongodb://root:example@localhost:27017/';
 let client: MongoClient;
 
 export async function setup() {
