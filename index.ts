@@ -1,5 +1,6 @@
 import { Server } from 'http';
 import { setup, disconnect } from './src/app';
+import logger from './src/logger';
 
 const PORT = parseInt(process.env.PORT as string, 10) || 3000;
 
@@ -7,7 +8,7 @@ async function start() {
     const api = await setup();
 
     const server = api.listen(PORT, () => {
-        console.log(`🚀 Server listening on port ${PORT}`);
+        logger.info(`🚀 Server listening on port ${PORT}`);
     });
 
     process.on('SIGTERM', () => {
@@ -24,9 +25,9 @@ start();
 function gracefulShutdown(server: Server, disconnect: () => Promise<void>) {
     server.close(async () => {
         process.stdout.cursorTo(0);
-        console.log('🚀 HTTP server closed ❌');
+        logger.info('🚀 HTTP server closed ❌');
         await disconnect();
-        console.log('Shutting down...');
+        logger.info('Shutting down...');
         process.exit(0);
     });
 }
